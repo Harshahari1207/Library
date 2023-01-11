@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js-Library APP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="books.js" defer></script>
+    
+</head>
+<body>
+    <header class="header">
+        <h1>Library</h1>
+        <h1>Login</h1>
+    </header>
+    <div class="container">
+        <div class="form-heading">
+            <h1>Add New Book To Library</h1>
+        </div>
+        <div class="books-heading">
+            <h1>Current Books In Library</h1>
+        </div>
+        <div class="form">
+            <button class="add-book-button">Add New Book</button>
+            <div id="add-book-form" style="display: none;">
+                <form action="" id="add-book">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" name="title">
+
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+
+                    <label for="pages">Pages:</label>
+                    <input type="text" id="pages" name="pages">
+
+                    <label for="Read">Read:</label>
+                    <select name="Read" id="Read">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </form>
+                 <button type="submit" class="submit-button">Submit Form</button>
+                 <button type="reset" class="reset-button">Reset Form</button>
+            </div>
+        </div>
+        <div class="books">
+
+        </div>
+    </div>
+    <footer><p>Copyright © 2023 Harsha</p> 
+        <a href="https://github.com/Harshahari1207" target="">
+            <img src="img/icons8-github.svg" alt=""></a>
+    </footer>
+</body>
+
+
+</html>

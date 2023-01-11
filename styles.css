@@ -1,0 +1,141 @@
+/* variables */
+*{
+    --primaryColor: rgb(213, 211, 211);
+    --secondaryColor: rgb(180, 236, 236);
+    --btnColor: rgb(132, 130, 130);
+    --white: rgb(243, 237, 237);
+    --btn_hover: rgb(162, 87, 87);
+
+    --br: 5px;
+    --pd: 5px;
+    --gap: 5px;
+    --box_shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+body{
+    background-image: url(img/bodybg.jpg);
+    background-size: cover;
+    margin: 0;
+    
+}
+.header{
+    
+    width:99.35%;
+    display: flex;
+    justify-content: space-around;
+    background-color: azure;
+    padding: var(--pd);
+    
+}
+.header>h1{
+    color: black;
+
+}
+.container{
+    
+    display: grid;
+    grid-template-rows: .1fr .1fr .3fr .1fr 1fr;
+    /* grid-template-rows: .1fr; */
+    text-align: center;
+    min-height: 100vh;
+}
+.form-heading{
+    
+    grid-row: 2/3;
+}
+h1{
+    text-align: center;
+    color: var(--white);
+}
+.books-heading{
+    
+    grid-row: 4/5;
+}
+.form{
+    gap: var(--gap);
+    grid-row: 3/4;
+    width: 30%;
+    justify-self: center;
+    background-color: var(--secondaryColor) transparent;
+    border-radius: calc(var(--br)*2);
+    padding: calc(var(--pd)*3);
+    opacity: .9;
+    position: unset;
+}
+#add-book-form{
+    padding: calc(var(--pd)*3);
+    border-radius: calc(var(--br)*2);
+}
+button{
+    border-radius: var(--br);
+    box-shadow: var(--box_shadow);
+    border: none;
+}
+.add-book-button{
+    padding: calc(var(--pd)*2);
+}
+input, option{
+    border-radius: var(--br);
+    border: none;
+}
+.books{
+    background-color: antiquewhite transparent;
+    
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-row: 5/6;
+    gap: calc(var(--gap)*3);
+    padding: calc(var(--pd)*3);
+}
+
+.books .card{
+    position: relative;
+    background-color: var(--secondaryColor);
+    color: black;
+    text-align: center;
+    height: 400px;
+    display: grid;
+    gap: var(--gap);
+    padding: calc(var(--pd)*3);
+    border-radius: calc(var(--br)*2);
+    opacity: .9;
+}
+
+#add-book{
+    display: grid;
+    grid-template-columns: .1fr 1fr;
+    gap: var(--gap);
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.read-status-button{
+    grid-row: 5/6;
+    background-color: var(--btnColor);
+    width: 40%;
+    justify-self: center;
+    border-radius: calc(var(--br)*3);
+}
+.remove-button{
+    grid-row: 6/7;
+    background-color: var(--btnColor);
+    width: 40%;
+    justify-self: center;
+    border-radius: calc(var(--br)*3);
+}
+.card>button{
+    gap: var(--gap);
+}
+button:hover{
+    background-color: var(--btn_hover);
+    cursor: pointer;
+    color: var(--white);
+}
+footer{
+    background-color: bisque;
+    color: rgb(25, 24, 24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
