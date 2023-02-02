@@ -2,21 +2,31 @@ const addBookButton = document.querySelector(".add-book-button");
 const submitButton = document.querySelector(".submit-button");
 const resetButton = document.querySelector(".reset-button");
 
+
+// Form Validation
+const title = document.querySelector('#title');
+const titleError1 = document.querySelector("#titleError");
+title.addEventListener("keyup", titleError);
+const author = document.querySelector('#author');
+const authorError1 = document.querySelector("#authorError");
+author.addEventListener("keyup", authorError);
+const submitError = document.querySelector("#submitError");
+
 // Empty library
 const myLibrary = [];
 
 // constructor 
-function Book(Title, Author, Pages, Read){
+function Book(Title, Author, Pages, read){
     this.Title = Title;
     this.Author = Author;
     this.Pages = Pages;
-    this.Read = Read;
+    this.Read = read;
 }
 
 // adding book to library
 function addBookToLibrary(Title, Author, Pages, Read){
     let book = new Book(Title, Author, Pages, Read);
-    myLibrary.push(book);
+    myLibrary.unshift(book);
     displayBooksOnPage();
 }
 
@@ -45,7 +55,7 @@ function displayBooksOnPage(){
 
         // Linking the data attribute of the remove button to the array and card
         removeBookButton.dataset.linkedArray = index;
-        
+        console.log("Index: ", removeBookButton.dataset.linkedArray);
         console.log("Show the datatset link back to the array....", removeBookButton);
         card.appendChild(removeBookButton);
         // Function for removing form the library
@@ -73,9 +83,12 @@ function displayBooksOnPage(){
         readStatusButton.addEventListener("click", toggleReadStatus);
         function toggleReadStatus(){
             let retrieveBookToToggle = readStatusButton.dataset.linkedArray;
+            console.log("indexof read: ",readStatusButton.dataset.linkedArray);
             Book.prototype = Object.create(Book.prototype);
             const toggleBook = new Book();
-            console.log("what is the toggle initial value?...", myLibrary[parseInt(retrieveBookToToggle)].read);
+            console.log("Toggle book",toggleBook)
+            console.log("prototype",Book.prototype);
+            console.log("what is the toggle initial value?...", myLibrary[parseInt(retrieveBookToToggle)].Read);
             if((myLibrary[parseInt(retrieveBookToToggle)].Read) == "Yes"){
                 toggleBook.Read = "No";
                 myLibrary[parseInt(retrieveBookToToggle)].Read = toggleBook.Read;
@@ -113,6 +126,7 @@ function intakeFormData(){
     let pages = document.getElementById("pages").value;
     let read = document.getElementById("Read").value;
     
+    document.getElementById("add-book-form").style.display = "none";
     // Checking if form is complete or not
     if((title == "") || (author == "") || (pages == "") || (read == "")){
         return;
@@ -127,4 +141,67 @@ function intakeFormData(){
 resetButton.addEventListener("click", clearForm);
 function clearForm(){
     document.getElementById("add-book").reset();
+}
+
+
+function titleError(){
+    
+    title1 = title.value;
+    console.log(title1);
+    if(title1.length === 0){
+        titleError1.innerHTML = "Title is required";
+        return false;
+    }
+    // if(!title1.match(/^[A-Za-z]&/)){
+    //     titleError1.innerHTML = "Error";
+    //     return false;
+    // }
+    titleError1.style.color = "green";
+    titleError1.innerHTML = 'Valid';
+    return true;
+}
+function authorError(){
+    
+    author1 = author.value;
+    console.log(author1);
+    if(author1.length === 0){
+        authorError1.innerHTML = "Author Name is required";
+        authorError1.style.color = "red";
+        return false;
+    }
+    if(author1.match(/^[A-Za-z\s]*$/)){
+        console.log(author1);
+        authorError1.innerHTML = "Valid";
+        authorError1.style.color = "green";
+        return true;
+    }
+    // }if(author1.match(/\W|_/)){
+    //     authorError1.innerHTML = "Name shouldn't have special characters";
+    //     authorError1.style.color = "green";
+    //     return false;
+    // }
+    authorError1.style.color = "red";
+    authorError1.innerHTML = 'Name should not have numbers and special characters';
+    return false;
+}
+
+// submitButton.addEventListener("click", validForm);
+
+function validForm(){
+    if(!titleError() || !authorError()){
+        submitError.innerHTML = "Fix the error that appear in the input of the form"
+        submitError.style.color = "red";
+        submitError.setTimeout(function(){
+            submitError.style.display = 'none';
+        }, 1000);
+        return false;
+    }
+    // }else{
+    //     submitError.innerHTML = "";
+    //     intakeFormData;
+
+    //     return true;
+        
+
+    // }
 }

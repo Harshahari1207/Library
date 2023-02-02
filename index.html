@@ -25,23 +25,35 @@
             <button class="add-book-button">Add New Book</button>
             <div id="add-book-form" style="display: none;">
                 <form action="" id="add-book">
-                    <label for="title">Title</label>
-                    <input id="title" type="text" name="title">
+                    <div class="titleDiv">
+                        <label for="title">Title:</label>
+                        <input id="title" type="text" name="title" placeholder="Book1" required>
+                        <span id="titleError"></span>
+                    </div>
 
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+                    <div class="authorDiv">
+                        <label for="author">Author:</label>
+                        <input type="text" id="author" name="author" placeholder="MrJhon" required>
+                        <span id="authorError"></span>
+                    </div>
 
-                    <label for="pages">Pages:</label>
-                    <input type="text" id="pages" name="pages">
+                    <div class="pagesDiv">
+                        <label for="pages">Pages:</label>
+                        <input type="number" id="pages" name="pages" max="1000">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
 
-                    <label for="Read">Read:</label>
-                    <select name="Read" id="Read">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
+                    <div class="readDiv">
+                        <label for="Read">Read:</label>
+                        <select name="Read" id="Read">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
                 </form>
-                 <button type="submit" class="submit-button">Submit Form</button>
+                 <button type="submit" class="submit-button" onclick="return validateForm()">Submit Form</button>
                  <button type="reset" class="reset-button">Reset Form</button>
+                 <span id="submitError"></span>
             </div>
         </div>
         <div class="books">
